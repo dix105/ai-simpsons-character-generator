@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Simpsons Character Generator: Turn Photo into Simpsons</title>
+    <meta name="description" content="Turn your photo into an AI Simpsons character with RemixAI’s AI Simpsons Character Generator. It transforms your look into an iconic Simpsons character like a yellow-skinned, Springfield-style version of yourself.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Simpsons Character Generator: Turn Photo into Simpsons">
+    <meta property="og:description" content="Turn your photo into an AI Simpsons character with RemixAI’s AI Simpsons Character Generator. It transforms your look into an iconic Simpsons character like a yellow-skinned, Springfield-style version of yourself.">
+    <meta property="og:image" content="images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="AI Simpsons Character Generator: Turn Photo into Simpsons">
+    <meta property="twitter:description" content="Turn your photo into an AI Simpsons character with RemixAI’s AI Simpsons Character Generator. It transforms your look into an iconic Simpsons character like a yellow-skinned, Springfield-style version of yourself.">
+    <meta property="twitter:image" content="images/og-image.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            AI Simpsons Generator
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        <nav>
+            <a href="#playground">Generator</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#gallery">Examples</a>
+            <a href="#faq">FAQ</a>
+            <a href="#playground" class="btn btn-primary nav-btn">Apply Filter</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-bg-image">
+            <img src="images/hero-bg.jpg" alt="Springfield Sky Background">
+        </div>
+        
+        <!-- Animated Clouds Overlay -->
+        <div class="hero-bg-animation">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+            <div class="cloud cloud-4"></div>
+        </div>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1>AI Simpsons Character Generator</h1>
+            <p>Turn your photo into an iconic yellow-skinned cartoon character.</p>
+            <a href="#playground" class="btn btn-primary btn-lg">Apply Simpsons Filter</a>
+        </div>
+    </section>
+
+    <!-- Playground Section -->
+    <section id="playground">
+        <div class="container">
+            <div class="section-header">
+                <h2>Free AI Simpsons Character Generator</h2>
+                <p>Want to see yourself as a Simpsons character? Our AI Simpsons Character Generator instantly transforms any photo into a Simpsons-style version.</p>
+            </div>
+            
+            <div class="playground-grid">
+                <!-- Left: Upload Panel -->
+                <div class="playground-panel">
+                    <h4>Upload Image</h4>
+                    <div class="upload-zone" id="upload-zone">
+                        <input type="file" id="file-input" accept="image/*" hidden>
+                        <div class="upload-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <p>Drag & drop or click to upload</p>
+                            <span>PNG, JPG up to 10MB</span>
+                        </div>
+                        <img id="preview-image" class="hidden" alt="Preview">
+                    </div>
+                    <div class="playground-actions">
+                        <button class="btn btn-primary" id="generate-btn" disabled>Apply Simpsons Filter</button>
+                        <button class="btn btn-secondary" id="reset-btn">Reset</button>
+                    </div>
+                </div>
+                
+                <!-- Right: Result Panel -->
+                <div class="playground-panel">
+                    <h4>Result</h4>
+                    <div class="result-display" id="result-container">
+                        <div class="result-placeholder" id="result-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            <p>Result will appear here</p>
+                        </div>
+                        <div class="loading-overlay hidden" id="loading-state">
+                            <div class="loading-spinner"></div>
+                            <p id="loading-text">Processing...</p>
+                        </div>
+                        <img id="result-image" class="hidden" alt="Simpsons Result">
+                    </div>
+                    <div class="playground-actions">
+                        <button class="btn btn-primary" id="download-btn" disabled>Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How to Turn Photo into Simpsons Style?</h2>
+                <p>Easily transform any photo into Simpsons-style character in three simple steps:</p>
+            </div>
+            
+            <div class="steps-grid">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </div>
+                    <h3>Upload Your Photo</h3>
+                    <p>Upload a photo of yourself or anyone you want to turn into a Simpsons character.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Generate Your Simpson Character</h3>
+                    <p>Click the “Apply Simpson Character Generator” button, and our AI will transform your image into the iconic Simpsons style.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"/></svg>
+                    </div>
+                    <h3>Download & Share</h3>
+                    <p>Once your Simpsons character is ready, download the image and share it online with friends or on social media.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Some Real Examples of Amazing Results</h2>
+                <p>Check out these iconic transformations created with our tool.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/gallery-simpson-man.jpg" alt="Man transformed into Simpsons character">
+                    <div class="gallery-overlay">
+                        <span>Businessman Style</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-simpson-woman.jpg" alt="Woman transformed into Simpsons character">
+                    <div class="gallery-overlay">
+                        <span>Marge Style</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-simpson-teen.jpg" alt="Teenager transformed into Simpsons character">
+                    <div class="gallery-overlay">
+                        <span>Skater Boy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>FAQs About Simpsons Character Generator</h2>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Why choose Remix AI Simpsons Character Generator?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Use Remix AI Simpsons Character Generator because it uses advanced AI algorithms trained to accurately replicate the iconic Simpsons cartoon art style.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How accurate is the cartoon transformation?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our AI tool captures key facial features, giving you a recognizable Simpsons-style character, but it’s still a fun, cartoon interpretation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is the AI Simpsons Character Generator free to use?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! Our AI Simpsons Character Generator is completely free. You just need to create an account to get free credits and start generating your Simpsons character.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How long does it take to generate a character?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our AI normally generates your Simpsons character within a few seconds after uploading your photo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>AI Simpsons Generator</h3>
+                    <p>Turn your world yellow with a single click.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" data-modal-target="privacy-modal">Privacy Policy</a>
+                    <a href="#" data-modal-target="terms-modal">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Simpsons Generator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="privacy-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="close-modal" data-modal-close="privacy-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>1. Data Collection</h4>
+                <p>We collect only the minimum data necessary:</p>
+                <ul>
+                  <li>Images you upload for processing (temporarily stored)</li>
+                  <li>Basic usage analytics (non-personal)</li>
+                  <li>Browser type and device information</li>
+                </ul>
+
+                <h4>2. Image Processing</h4>
+                <p>Your uploaded images are:</p>
+                <ul>
+                  <li>Processed securely on our servers</li>
+                  <li>Automatically deleted within 24 hours</li>
+                  <li>Never shared with third parties</li>
+                  <li>Not used for AI training without consent</li>
+                </ul>
+
+                <h4>3. Data Security</h4>
+                <p>All data transmission is encrypted using SSL/TLS protocols.</p>
+
+                <h4>4. Cookies</h4>
+                <p>We use essential cookies only for site functionality.</p>
+
+                <h4>5. Your Rights</h4>
+                <p>You have the right to request deletion of any stored data.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Terms of Service</h2>
+                <button class="close-modal" data-modal-close="terms-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>1. Acceptance of Terms</h4>
+                <p>By using this service, you agree to these Terms.</p>
+
+                <h4>2. Service Description</h4>
+                <p>This service provides AI-powered image transformation. Provided "as-is" without warranties.</p>
+
+                <h4>3. Acceptable Use</h4>
+                <p>You agree NOT to upload:</p>
+                <ul>
+                  <li>Illegal or unlawful content</li>
+                  <li>Explicit, pornographic, or obscene material</li>
+                  <li>Content depicting violence or harm</li>
+                  <li>Images you do not have rights to use</li>
+                </ul>
+
+                <h4>4. Intellectual Property</h4>
+                <p>You retain full ownership of your original images. Generated effects are royalty-free for personal and commercial use.</p>
+
+                <h4>5. Limitation of Liability</h4>
+                <p>We are not liable for any damages arising from the use of this service.</p>
+
+                <h4>6. Modifications</h4>
+                <p>We may update these terms at any time. Continued use constitutes acceptance.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
